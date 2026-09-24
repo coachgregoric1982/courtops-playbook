@@ -1,0 +1,1 @@
+import{c as e}from"./useStore-DkUXc2QZ.js";import{t}from"./play-editor-B4EPw8DV.js";import{r as n}from"./index-Dfe77vQx.js";var r=e();function i(){let{playId:e}=n.useParams();return(0,r.jsx)(t,{playId:e})}export{i as component};

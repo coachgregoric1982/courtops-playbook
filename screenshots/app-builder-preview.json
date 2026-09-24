@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "CourtOps Playbook",
+      "hasCanvas": true,
+      "bodyTextLen": 499,
+      "bodyTextHash": "a6e4da053a486150bd7334af4e4681197f91d3456802c139a40083978ad33ad7",
+      "bodyTextPrefix": "PLAYBOOK · FIBA BOARD CourtOps U14 Phoenix PHX · U14 CO New play",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "CourtOps Playbook",
+      "hasCanvas": true,
+      "bodyTextLen": 499,
+      "bodyTextHash": "a6e4da053a486150bd7334af4e4681197f91d3456802c139a40083978ad33ad7",
+      "bodyTextPrefix": "PLAYBOOK · FIBA BOARD CourtOps U14 Phoenix PHX · U14 CO New play",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
