@@ -5,7 +5,7 @@ import { useAppStore } from "@/lib/store";
 export function BrandTheme() {
   const color = useAppStore((s) => s.settings.primaryColor);
   useEffect(() => {
-    applyBrandColor(color || "#d4a017");
+    applyBrandColor(color || "#f07828");
   }, [color]);
   return null;
 }

@@ -1,4 +1,4 @@
-const DEFAULT = "#d4a017";
+const DEFAULT = "#f07828";
 
 export function parseHex(hex: string): { r: number; g: number; b: number } | null {
   const raw = hex.trim().replace("#", "");
@@ -61,7 +61,7 @@ export function paletteFrom(hex: string): {
 } {
   const accent = normalizeAccent(hex);
   const rgb = parseHex(accent)!;
-  const accentFg = lum(rgb.r, rgb.g, rgb.b) > 0.42 ? "#140e04" : "#f4f1ea";
+  const accentFg = lum(rgb.r, rgb.g, rgb.b) > 0.42 ? "#07102c" : "#f3f1ec";
   const lifted = mix(rgb, { r: 255, g: 245, b: 220 }, 0.32);
   return {
     accent,
@@ -131,7 +131,7 @@ export function drawDefaultMark(
   y: number,
   size: number,
   fill: string,
-  ink = "#140e04",
+  ink = "#07102c",
 ): void {
   const cx = x + size / 2;
   ctx.save();
@@ -175,7 +175,7 @@ export async function drawBrandMark(
   size: number,
   logoDataUrl: string | undefined,
   fill: string,
-  ink = "#140e04",
+  ink = "#07102c",
 ): Promise<void> {
   if (logoDataUrl) {
     try {
@@ -211,6 +211,6 @@ function roundClip(
   ctx.clip();
 }
 
-export function defaultMarkSvg(fill: string, ink = "#140e04"): string {
+export function defaultMarkSvg(fill: string, ink = "#07102c"): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><rect width="64" height="64" rx="14" fill="${fill}"/><g fill="none" stroke="${ink}" stroke-width="3.4" stroke-linecap="round"><path d="M12 14h40"/><rect x="22" y="14" width="20" height="18"/><path d="M12 14c0 24 40 24 40 0"/><circle cx="32" cy="18.5" r="3.4"/></g><text x="32" y="52" text-anchor="middle" font-size="13" font-family="Arial Narrow, sans-serif" font-weight="700" fill="${ink}">CO</text></svg>`;
 }

@@ -62,7 +62,7 @@ export const Route = createRootRoute({
         name: "description",
         content: "Visual drill software. Draw set plays and drills on a FIBA court, then run timed practice.",
       },
-      { name: "theme-color", content: "#070b12" },
+      { name: "theme-color", content: "#07102c" },
       { name: "application-name", content: APP_NAME },
       { name: "apple-mobile-web-app-title", content: APP_NAME },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
@@ -76,7 +76,7 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
       },
     ],
   }),
