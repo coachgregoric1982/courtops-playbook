@@ -15,7 +15,6 @@ import {
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input, NativeSelect, Textarea } from "@/components/ui/input";
@@ -306,23 +305,24 @@ export function PlayEditor({ playId }: { playId: string }) {
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col bg-bg pb-[env(safe-area-inset-bottom)]">
-      <header className="flex items-center gap-1 px-2 pt-[max(0.5rem,env(safe-area-inset-top))]">
-        <Button
-          variant="ghost"
-          size="icon"
+      <header className="flex items-center gap-2 bg-[#f4f1eb] px-3 pt-[max(0.5rem,env(safe-area-inset-top))] pb-2">
+        <button
+          type="button"
+          className="hw-iconbtn shrink-0"
           aria-label={t("edit.back")}
           onClick={() => navigate({ to: "/playbook" })}
         >
           <ChevronLeft className="size-5" />
-        </Button>
+        </button>
         <Input
           value={draft.name}
           onChange={(e) => patch((p) => ({ ...p, name: e.target.value }))}
-          className="h-11 border-0 bg-transparent px-1 font-display text-lg tracking-tight"
+          className="hw-headline h-12 border-0 bg-transparent px-1 text-[28px] shadow-none focus-visible:ring-0"
           aria-label={t("edit.playName")}
         />
         <Button
           size="sm"
+          className="shrink-0"
           onClick={() => {
             savePlay(draft);
             toast(t("edit.saved"));
@@ -350,7 +350,8 @@ export function PlayEditor({ playId }: { playId: string }) {
       </div>
 
       <div className="relative px-3">
-        <div className="overflow-hidden rounded-xl bg-court shadow-[var(--shadow-border)]">
+        <div className="hw-card overflow-hidden p-1.5" style={{ borderRadius: 18 }}>
+          <div className="overflow-hidden rounded-[12px]">
           <CourtCanvas
             court={draft.court}
             step={step}
@@ -365,6 +366,7 @@ export function PlayEditor({ playId }: { playId: string }) {
             onTool={setTool}
             labelFor={labelFor}
           />
+          </div>
           {empty && (
             <p className="pointer-events-none absolute inset-x-4 bottom-3 text-center text-xs text-court-line/80">
               {t("edit.emptyHint")}
@@ -384,12 +386,7 @@ export function PlayEditor({ playId }: { playId: string }) {
             key={id}
             type="button"
             onClick={() => setTool(id)}
-            className={cn(
-              "h-11 shrink-0 rounded-md px-3 text-xs font-medium transition-[background-color,color] duration-150",
-              tool === id
-                ? "bg-accent text-accent-fg"
-                : "bg-raised text-muted",
-            )}
+            className={cn("shrink-0 text-xs", tool === id ? "hw-chip-on" : "hw-chip")}
           >
             {t(TOOL_KEYS[id])}
           </button>
@@ -397,7 +394,7 @@ export function PlayEditor({ playId }: { playId: string }) {
         <button
           type="button"
           onClick={undoStroke}
-          className="inline-flex size-11 shrink-0 items-center justify-center rounded-md bg-raised text-muted"
+          className="hw-iconbtn size-11 shrink-0"
           aria-label={t("edit.undo")}
         >
           <Redo className="size-4 -scale-x-100" />
@@ -436,33 +433,23 @@ export function PlayEditor({ playId }: { playId: string }) {
       </div>
 
       <div className="mt-3 flex items-center gap-2 px-3">
-        <p className="font-display text-lg tabular-nums text-fg">
-          {t("edit.step", { n: stepIndex + 1 })}
-          <span className="text-muted">/{draft.steps.length}</span>
+        <p className="hw-num text-[28px]">
+          {stepIndex + 1}
+          <span className="text-[#5f6680]">/{draft.steps.length}</span>
         </p>
         <div className="ml-auto flex gap-1">
-          <Button variant="secondary" size="icon" aria-label={t("edit.addStep")} onClick={addStep}>
+          <button type="button" className="hw-tile" aria-label={t("edit.addStep")} onClick={addStep}>
             <Plus className="size-4" />
-          </Button>
-          <Button
-            variant="secondary"
-            size="icon"
-            aria-label={t("edit.dupStep")}
-            onClick={duplicateStep}
-          >
+          </button>
+          <button type="button" className="hw-tile" aria-label={t("edit.dupStep")} onClick={duplicateStep}>
             <Copy className="size-4" />
-          </Button>
-          <Button
-            variant="secondary"
-            size="icon"
-            aria-label={t("edit.delStep")}
-            onClick={deleteStep}
-          >
+          </button>
+          <button type="button" className="hw-tile" aria-label={t("edit.delStep")} onClick={deleteStep}>
             <Trash2 className="size-4" />
-          </Button>
-          <Button
-            variant="secondary"
-            size="icon"
+          </button>
+          <button
+            type="button"
+            className="grid size-11 shrink-0 place-items-center rounded-full bg-[#f07828] text-[#07102c]"
             aria-label={playing ? t("edit.pause") : t("edit.play")}
             onClick={() => void onPlay()}
           >
@@ -471,15 +458,15 @@ export function PlayEditor({ playId }: { playId: string }) {
             ) : (
               <PlayIcon className="size-4 ml-0.5" />
             )}
-          </Button>
-          <Button variant="secondary" size="icon" aria-label={t("edit.next")} onClick={onNext}>
+          </button>
+          <button type="button" className="hw-tile" aria-label={t("edit.next")} onClick={onNext}>
             <SkipForward className="size-4" />
-          </Button>
+          </button>
         </div>
       </div>
 
       <div className="mt-4 flex flex-col gap-3 px-3 pb-8">
-        <div>
+        <div className="hw-card p-3">
           <Label htmlFor="job">{t("edit.job")}</Label>
           <Textarea
             id="job"
@@ -489,7 +476,7 @@ export function PlayEditor({ playId }: { playId: string }) {
             onChange={(e) => patch((p) => ({ ...p, note: e.target.value }))}
           />
         </div>
-        <div>
+        <div className="hw-card p-3">
           <Label>{t("edit.stepNote")}</Label>
           <Input
             className="mt-1"
@@ -498,7 +485,7 @@ export function PlayEditor({ playId }: { playId: string }) {
             onChange={(e) => updateStep({ ...step, note: e.target.value })}
           />
         </div>
-        <div className="rounded-xl bg-surface p-3 shadow-[var(--shadow-border)]">
+        <div className="hw-card p-3">
           <label className="flex min-h-11 items-center gap-3">
             <input
               type="checkbox"
@@ -574,10 +561,7 @@ export function PlayEditor({ playId }: { playId: string }) {
                   key={tag}
                   type="button"
                   onClick={() => toggleTag(tag)}
-                  className={cn(
-                    "h-9 rounded-full px-3 text-xs font-medium",
-                    on ? "bg-accent text-accent-fg" : "bg-raised text-muted",
-                  )}
+                  className={cn("text-xs", on ? "hw-chip-on" : "hw-chip")}
                 >
                   {t(`tag.${tag}` as Msg)}
                 </button>
@@ -585,7 +569,7 @@ export function PlayEditor({ playId }: { playId: string }) {
             })}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-2 pt-2">
+        <div className="hw-card grid grid-cols-2 gap-2 p-3">
           <Button
             variant="secondary"
             onClick={async () => {
@@ -729,16 +713,13 @@ function Seg({
   onChange: (v: "a" | "b") => void;
 }) {
   return (
-    <div className="flex h-11 shrink-0 rounded-lg bg-raised p-1">
+    <div className="flex shrink-0 gap-1">
       {(["a", "b"] as const).map((k) => (
         <button
           key={k}
           type="button"
           onClick={() => onChange(k)}
-          className={cn(
-            "h-full rounded-md px-3 text-xs font-medium",
-            value === k ? "bg-surface text-fg" : "text-muted",
-          )}
+          className={cn(value === k ? "hw-chip-on" : "hw-chip")}
         >
           {k === "a" ? a : b}
         </button>
@@ -771,9 +752,9 @@ export function TagRow({ tags }: { tags: PlayTag[] }) {
   return (
     <div className="flex flex-wrap gap-1">
       {tags.map((tag) => (
-        <Badge key={tag} tone="accent">
+        <span key={tag} className="hw-tag">
           {tr(`tag.${tag}` as Msg)}
-        </Badge>
+        </span>
       ))}
     </div>
   );

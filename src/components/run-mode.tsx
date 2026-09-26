@@ -132,7 +132,7 @@ export function RunMode({ planId }: { planId: string }) {
         >
           <ChevronLeft className="size-5" />
         </Button>
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
+        <p className="hw-label text-[#a8480a]">
           {plan.name}
         </p>
         <span className="size-11" />
@@ -142,19 +142,22 @@ export function RunMode({ planId }: { planId: string }) {
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
           {done ? t("run.complete") : t(`block.${block.type}` as Msg)}
         </p>
-        <h1 className="mt-2 font-display text-4xl leading-tight tracking-tight text-fg">
+        <h1 className="hw-headline mt-2 text-[40px]">
           {done ? t("run.doneTitle") : block.title}
         </h1>
-        <p
-          className="mt-8 font-display text-7xl tabular-nums leading-none text-fg"
-          data-remaining={remaining}
-          aria-live="polite"
-        >
-          {done ? "0:00" : formatMmss(remaining)}
-        </p>
-        <div className="mt-6 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-raised">
+        <div className="relative mt-6 w-full overflow-hidden rounded-[22px] bg-[#07102c] px-4 py-6 text-white">
+          <div className="hw-wood pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden />
+          <p
+            className="hw-num relative text-[96px] text-[#f07828]"
+            data-remaining={remaining}
+            aria-live="polite"
+          >
+            {done ? "0:00" : formatMmss(remaining)}
+          </p>
+        </div>
+        <div className="mt-6 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-[#f1ede5]">
           <div
-            className="h-full rounded-full bg-accent"
+            className="h-full rounded-full bg-[#f07828]"
             style={{ width: `${done ? 100 : pct * 100}%` }}
           />
         </div>
@@ -162,7 +165,7 @@ export function RunMode({ planId }: { planId: string }) {
           <p className="mt-5 max-w-sm text-sm text-muted">{block.notes}</p>
         ) : null}
         {block.cue && !done ? (
-          <p className="mt-3 max-w-sm font-display text-xl text-accent">{block.cue}</p>
+          <p className="mt-3 max-w-sm text-sm font-semibold text-[#a8480a]">{block.cue}</p>
         ) : null}
         {block.equipment && !done ? (
           <p className="mt-2 text-xs text-faint">{t("run.need", { item: block.equipment })}</p>
@@ -213,12 +216,12 @@ export function RunMode({ planId }: { planId: string }) {
         ) : null}
       </div>
 
-      <div className="rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]">
-        <p className="text-xs uppercase tracking-[0.16em] text-faint">{t("run.next")}</p>
+      <div className="hw-card p-4">
+        <p className="hw-label">{t("run.next")}</p>
         {next && !done ? (
-          <p className="mt-1 font-display text-xl text-fg">
+          <p className="hw-headline mt-1 text-[28px]">
             {next.title}{" "}
-            <span className="text-muted">· {next.minutes} min</span>
+            <span className="text-[18px] text-[#5f6680]">· {next.minutes} min</span>
           </p>
         ) : (
           <p className="mt-1 text-sm text-muted">

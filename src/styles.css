@@ -2,22 +2,23 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Barlow Condensed", "Arial Narrow", ui-sans-serif, sans-serif;
+  --font-sans: "DM Sans", "Inter", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Big Shoulders Display", "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
 
-  --color-bg: #07102c;
-  --color-surface: #0e1a42;
-  --color-raised: #132252;
-  --color-fg: #f3f1ec;
-  --color-muted: #9aa3c2;
-  --color-faint: #6d7694;
+  --color-bg: #f4f1eb;
+  --color-surface: #ffffff;
+  --color-raised: #f7f4ee;
+  --color-fg: #07102c;
+  --color-muted: #5f6680;
+  --color-faint: #6b7391;
   --color-accent: #f07828;
   --color-accent-fg: #07102c;
-  --color-accent-2: #f5a05a;
-  --color-border: #24305a;
-  --color-danger: #d07676;
-  --color-ok: #7dbe8a;
-  --color-warn: #f07828;
+  --color-accent-2: #a8480a;
+  --color-ink: #a8480a;
+  --color-border: #e6e0d4;
+  --color-danger: #b42323;
+  --color-ok: #15803d;
+  --color-warn: #b42323;
   --color-offense: #f07828;
   --color-defense: #1aa6a1;
   --color-court: #2c1c12;
@@ -46,17 +47,14 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: var(--color-bg);
-    color: var(--color-fg);
+    background: #f4f1eb;
+    color: #07102c;
   }
 
   body {
     min-height: 100dvh;
-    background:
-      radial-gradient(900px 420px at 50% -8%, color-mix(in srgb, #f07828 22%, transparent) 0%, transparent 62%),
-      radial-gradient(circle at 100% 120%, color-mix(in srgb, #1aa6a1 16%, transparent) 0%, transparent 46%),
-      var(--color-bg);
-    color: var(--color-fg);
+    background: #f4f1eb;
+    color: #07102c;
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
@@ -112,6 +110,115 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@layer components {
+  .hw-headline {
+    font-family: "Big Shoulders Display", "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    color: #07102c;
+  }
+
+  .hw-num {
+    font-family: "Big Shoulders Display", "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 800;
+    line-height: 0.9;
+    font-variant-numeric: tabular-nums;
+    color: #07102c;
+  }
+
+  .hw-label {
+    font-family: "DM Sans", "Inter", "Figtree", sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: #5f6680;
+  }
+
+  .hw-card {
+    background: #fff;
+    border-radius: 22px;
+    border: 1px solid #ece7dd;
+    box-shadow:
+      0 1px 0 rgba(7, 16, 44, 0.04),
+      0 10px 30px -12px rgba(7, 16, 44, 0.18);
+  }
+
+  .hw-tag {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    border-radius: 6px;
+    padding: 0 8px;
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #fde8d9;
+    color: #a8480a;
+  }
+
+  .hw-chip,
+  .hw-chip-on {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    border-radius: 17px;
+    padding: 0 12px;
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .hw-chip {
+    background: #fff;
+    border: 1px solid #e6e0d4;
+    color: #4a5170;
+  }
+
+  .hw-chip-on {
+    background: #07102c;
+    color: #fff;
+    border: 1px solid #07102c;
+  }
+
+  .hw-iconbtn {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 0;
+    padding: 0;
+    border-radius: 999px;
+    background: #fff;
+    color: #07102c;
+    box-shadow: 0 6px 16px -6px rgba(7, 16, 44, 0.3);
+  }
+
+  .hw-tile {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    flex-shrink: 0;
+    border: 1px solid #e6e0d4;
+    padding: 0;
+    border-radius: 12px;
+    background: #fff;
+    color: #07102c;
+  }
+
+  .hw-wood {
+    background-color: #e2b47e;
+    background-image: url("/wood.jpg");
+    background-size: 420px;
+    background-position: center;
+    background-repeat: repeat;
+  }
 }
 
 @media print {

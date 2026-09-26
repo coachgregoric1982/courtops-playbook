@@ -60,7 +60,7 @@ export function AppShell({
       ) : null}
       <div className={cn("flex-1", hideNav ? "pb-0" : "pb-20")}>{children}</div>
       {!hideNav && (
-        <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-lg border-t border-border bg-surface/95 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur-sm no-print">
+        <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-lg border-t border-[#ebe6dc] bg-white pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_-16px_rgba(7,16,44,0.35)] no-print">
           <ul className="grid grid-cols-4">
             {TABS.map((tab) => {
               const active = tab.match(pathname);
@@ -70,11 +70,18 @@ export function AppShell({
                   <Link
                     to={tab.to}
                     className={cn(
-                      "flex min-h-14 flex-col items-center justify-center gap-0.5 text-[11px] font-medium transition-[color] duration-150",
-                      active ? "text-accent" : "text-muted",
+                      "flex min-h-14 flex-col items-center justify-center gap-0.5 text-[11px] font-medium",
+                      active ? "text-[#07102c]" : "text-[#5f6680]",
                     )}
                   >
-                    <Icon className="size-5" strokeWidth={active ? 2.2 : 1.8} />
+                    <span
+                      className={cn(
+                        "grid h-[30px] w-[52px] place-items-center rounded-[15px]",
+                        active && "bg-[#fde8d9]",
+                      )}
+                    >
+                      <Icon className={cn("size-5", active ? "text-[#f07828]" : "text-[#5f6680]")} strokeWidth={active ? 2.2 : 1.8} />
+                    </span>
                     {t(tab.labelKey)}
                   </Link>
                 </li>
@@ -104,11 +111,11 @@ export function PageHeader({
         {leading}
         <div className="min-w-0">
           {kicker ? (
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
+            <p className="hw-label text-[#a8480a]">
               {kicker}
             </p>
           ) : null}
-          <h1 className="font-display text-3xl tracking-tight text-fg">{title}</h1>
+          <h1 className="hw-headline mt-1 text-[40px]">{title}</h1>
         </div>
       </div>
       {action}

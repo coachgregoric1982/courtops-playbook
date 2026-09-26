@@ -52,22 +52,22 @@ function SubscribePage() {
       <PageHeader kicker={t("sub.kicker")} title={t("sub.title")} />
       <div className="flex flex-col gap-4 px-4 pb-10">
         <p className="text-sm text-muted">{t("sub.blurb")}</p>
-        <div className="rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+        <div className="hw-card p-4">
+          <p className="hw-label text-[#a8480a]">
             {t("sub.sideline")}
           </p>
-          <p className="mt-1 font-display text-2xl text-fg">{t("sub.free")}</p>
+          <p className="hw-headline mt-1 text-[32px]">{t("sub.free")}</p>
           <ul className="mt-3 flex flex-col gap-1.5 text-sm text-muted">
             <li>{t("sub.sideline1")}</li>
             <li>{t("sub.sideline2")}</li>
             <li>{t("sub.sideline3")}</li>
           </ul>
         </div>
-        <div className="rounded-xl bg-accent p-4 text-accent-fg">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] opacity-80">
+        <div className="rounded-[22px] bg-[#07102c] p-4 text-white">
+          <p className="hw-label text-white/75">
             {t("sub.club")}
           </p>
-          <p className="mt-1 font-display text-2xl">{t("sub.forProgram")}</p>
+          <p className="hw-headline mt-1 text-[32px] text-white">{t("sub.forProgram")}</p>
           <ul className="mt-3 flex flex-col gap-1.5 text-sm opacity-90">
             <li>{t("sub.club1")}</li>
             <li>{t("sub.club2")}</li>

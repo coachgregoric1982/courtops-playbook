@@ -51,7 +51,7 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
       {open ? (
         <ul
           role="listbox"
-          className="absolute right-0 z-50 mt-2 w-[14rem] overflow-hidden rounded-xl bg-[#121a28] py-1 shadow-[0_16px_40px_rgba(0,0,0,0.45),var(--shadow-border)]"
+          className="absolute right-0 z-50 mt-2 w-[14rem] overflow-hidden rounded-xl border border-[#e6e0d4] bg-white py-1 shadow-[0_16px_40px_rgba(7,16,44,0.16)]"
         >
           {LOCALES.map((id) => {
             const on = id === locale;
