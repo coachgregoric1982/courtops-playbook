@@ -114,20 +114,20 @@ export function PlanEditor({ planId }: { planId: string }) {
   };
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col bg-transparent pb-[env(safe-area-inset-bottom)]">
-      <header className="flex items-center gap-2 bg-[#f4f1eb] px-3 pt-[max(0.5rem,env(safe-area-inset-top))] pb-2">
-        <button
-          type="button"
-          className="mc-iconbtn shrink-0"
+    <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col bg-bg pb-[env(safe-area-inset-bottom)]">
+      <header className="flex items-center gap-1 px-2 pt-[max(0.5rem,env(safe-area-inset-top))]">
+        <Button
+          variant="ghost"
+          size="icon"
           aria-label={t("edit.back")}
           onClick={() => navigate({ to: "/practices" })}
         >
           <ChevronLeft className="size-5" />
-        </button>
+        </Button>
         <Input
           value={draft.name}
           onChange={(e) => patch((p) => ({ ...p, name: e.target.value }))}
-          className="mc-headline h-12 border-0 bg-transparent px-1 text-[28px] shadow-none focus-visible:ring-0"
+          className="h-11 border-0 bg-transparent px-1 font-display text-lg tracking-tight"
           aria-label={t("plan.name")}
         />
         <Button
@@ -173,7 +173,7 @@ export function PlanEditor({ planId }: { planId: string }) {
 
       <div className="mt-4 px-4">
         <div className="flex items-baseline justify-between">
-          <p className="mc-headline text-[28px]">{t("plan.timeline")}</p>
+          <p className="font-display text-xl text-fg">{t("plan.timeline")}</p>
           <p
             className={cn(
               "text-sm tabular-nums",
@@ -197,7 +197,7 @@ export function PlanEditor({ planId }: { planId: string }) {
           return (
             <li
               key={block.id}
-              className="mc-card p-3"
+              className="rounded-xl bg-surface p-3 shadow-[var(--shadow-border)]"
             >
               <div className="flex items-start gap-2">
                 <div className="flex flex-col">
@@ -248,7 +248,6 @@ export function PlanEditor({ planId }: { planId: string }) {
                         })
                       }
                       aria-label={t("plan.mins")}
-                      className="mc-num text-[28px]"
                     />
                   </div>
                   <Textarea

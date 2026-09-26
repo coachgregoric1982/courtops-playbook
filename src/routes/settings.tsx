@@ -41,8 +41,8 @@ function SettingsPage() {
     <AppShell>
       <PageHeader kicker={t("settings.kicker")} title={t("settings.title")} />
       <div className="flex flex-col gap-4 px-4 pb-10">
-        <section className="mc-card p-4">
-          <h2 className="mc-headline text-[28px]">{t("settings.account")}</h2>
+        <section className="rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]">
+          <h2 className="font-display text-2xl text-fg">{t("settings.account")}</h2>
           {isPending ? (
             <div className="mt-3 h-10 animate-pulse rounded-md bg-raised" />
           ) : (
@@ -69,9 +69,8 @@ function SettingsPage() {
             </>
           )}
         </section>
-        <section className="mc-card flex flex-col gap-4 p-4">
-          <div>
-            <Label htmlFor="team">{t("settings.team")}</Label>
+        <div>
+          <Label htmlFor="team">{t("settings.team")}</Label>
           <Input
             id="team"
             className="mt-1"
@@ -187,20 +186,18 @@ function SettingsPage() {
               )}
             </div>
           </div>
-          </div>
-        </section>
+        </div>
 
         <section className="mt-4">
-          <h2 className="mc-headline text-[28px]">{t("settings.roster")}</h2>
+          <h2 className="font-display text-2xl text-fg">{t("settings.roster")}</h2>
           <p className="mt-1 text-sm text-muted">{t("settings.rosterHint")}</p>
           <ul className="mt-3 flex flex-col gap-2">
             {roster.map((p) => (
               <li
                 key={p.id}
-                className="mc-card p-2"
+                className="rounded-xl bg-surface p-2 shadow-[var(--shadow-border)]"
               >
-                <div className="flex items-center gap-1.5">
-                  <RosterAvatar name={p.name} />
+                <div className="flex gap-1.5">
                   <Input
                     className="w-16 shrink-0"
                     value={p.number}
@@ -318,7 +315,7 @@ function SettingsPage() {
           </div>
         </section>
 
-        <div className="mc-card p-4 text-sm text-muted">
+        <div className="rounded-xl bg-surface p-4 text-sm text-muted shadow-[var(--shadow-border)]">
           <p className="font-medium text-fg">{t("settings.thisDevice")}</p>
           <p className="mt-1">
             {t("settings.stored", {
@@ -332,17 +329,4 @@ function SettingsPage() {
       </div>
     </AppShell>
   );
-}
-
-function RosterAvatar({ name }: { name: string }) {
-  const letters =
-    name
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((part) => part[0] ?? "")
-      .join("")
-      .toUpperCase() || "?";
-  return <span className="mc-avatar size-10 shrink-0 text-[16px]">{letters}</span>;
 }

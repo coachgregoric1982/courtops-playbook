@@ -76,16 +76,16 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
       },
     ],
   }),
   component: () => (
-    <html lang="en" className="antialiased" suppressHydrationWarning>
+    <html lang="en" className="dark antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
-      <body className="bg-transparent text-fg">
+      <body className="bg-bg text-fg">
         <PreviewHostBridge />
         <AuthProvider>
           <BrandTheme />
@@ -93,10 +93,10 @@ export const Route = createRootRoute({
           <Splash />
           <Outlet />
           <Toaster
-            theme="light"
+            theme="dark"
             position="top-center"
             toastOptions={{
-              className: "rounded-[22px] border-0 bg-white text-[#07102c] shadow-[inset_0_1px_0_rgba(255,255,255,.9),0_2px_3px_rgba(80,45,10,.18),0_18px_34px_-14px_rgba(80,45,10,.55)]",
+              className: "bg-surface text-fg border-border",
             }}
           />
         </AuthProvider>

@@ -95,11 +95,11 @@ function ClubPage() {
       <AppShell>
         <PageHeader kicker={t("club.kicker")} title={club.name} />
         <div className="flex flex-col gap-4 px-4 pb-10">
-          <div className="mc-card p-4">
-            <p className="mc-label text-[#a8480a]">
+          <div className="rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">
               {planLabel}
             </p>
-            <p className="mc-headline mt-2 text-[32px]">
+            <p className="mt-2 font-display text-2xl text-fg">
               {club.shortName || club.name}
             </p>
             <p className="mt-1 text-sm text-muted">
@@ -108,11 +108,11 @@ function ClubPage() {
                 role,
               })}
             </p>
-            <div className="mt-4 rounded-[14px] bg-[#f7f4ee] px-3 py-3">
-              <p className="mc-label">
+            <div className="mt-4 rounded-lg bg-raised px-3 py-3">
+              <p className="text-xs uppercase tracking-[0.14em] text-faint">
                 {t("club.code")}
               </p>
-              <p className="mc-num mt-1 text-[40px] tracking-[0.12em]">
+              <p className="mt-1 font-display text-3xl tracking-[0.2em] text-fg">
                 {club.joinCode}
               </p>
               <p className="mt-1 text-xs text-muted">{t("club.staffHint")}</p>
@@ -136,8 +136,8 @@ function ClubPage() {
       <PageHeader kicker={t("club.kicker")} title={t("club.createJoin")} />
       <div className="flex flex-col gap-6 px-4 pb-10">
         <p className="text-sm text-muted">{t("club.blurb")}</p>
-        <form className="mc-card flex flex-col gap-3 p-4" onSubmit={(e) => void onCreate(e)}>
-          <h2 className="mc-headline text-[28px]">{t("club.create")}</h2>
+        <form className="flex flex-col gap-3" onSubmit={(e) => void onCreate(e)}>
+          <h2 className="font-display text-2xl text-fg">{t("club.create")}</h2>
           <div>
             <Label htmlFor="club-name">{t("club.name")}</Label>
             <Input
@@ -164,8 +164,8 @@ function ClubPage() {
             {busy ? t("club.creating") : t("club.createCta")}
           </Button>
         </form>
-        <form className="mc-card flex flex-col gap-3 p-4" onSubmit={(e) => void onJoin(e)}>
-          <h2 className="mc-headline text-[28px]">{t("club.join")}</h2>
+        <form className="flex flex-col gap-3" onSubmit={(e) => void onJoin(e)}>
+          <h2 className="font-display text-2xl text-fg">{t("club.join")}</h2>
           <div>
             <Label htmlFor="code">{t("club.code")}</Label>
             <Input

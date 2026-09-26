@@ -21,10 +21,10 @@ export function AlertDialogContent({
 }) {
   return (
     <AlertDialogPrimitive.Portal>
-      <AlertDialogPrimitive.Overlay className="fixed inset-0 z-50 bg-[#07102c]/40" />
+      <AlertDialogPrimitive.Overlay className="fixed inset-0 z-50 bg-bg/80" />
       <AlertDialogPrimitive.Content
         className={cn(
-          "fixed z-50 left-1/2 top-1/2 w-[min(100%-1.5rem,26rem)] -translate-x-1/2 -translate-y-1/2 rounded-[22px] border-0 bg-white p-5 shadow-[inset_0_1px_0_rgba(255,255,255,.9),0_2px_3px_rgba(80,45,10,.18),0_18px_34px_-14px_rgba(80,45,10,.55)]",
+          "fixed z-50 left-1/2 top-1/2 w-[min(100%-1.5rem,26rem)] -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border bg-surface p-5",
           className,
         )}
       >

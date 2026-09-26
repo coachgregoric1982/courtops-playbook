@@ -38,8 +38,8 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
         aria-label={LOCALE_META[locale].native}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "mc-chip gap-2 px-2.5",
-          open && "shadow-[0_8px_16px_-6px_rgba(80,45,10,.4)]",
+          "inline-flex h-10 min-h-10 items-center gap-2 rounded-full bg-raised px-2.5 shadow-[var(--shadow-border)]",
+          open && "shadow-[var(--shadow-border-hover)]",
         )}
       >
         <LangFlag locale={locale} />
@@ -51,7 +51,7 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
       {open ? (
         <ul
           role="listbox"
-          className="absolute right-0 z-50 mt-2 w-[14rem] overflow-hidden rounded-[22px] border-0 bg-white py-1 shadow-[inset_0_1px_0_rgba(255,255,255,.9),0_2px_3px_rgba(80,45,10,.18),0_18px_34px_-14px_rgba(80,45,10,.55)]"
+          className="absolute right-0 z-50 mt-2 w-[14rem] overflow-hidden rounded-xl bg-[#121a28] py-1 shadow-[0_16px_40px_rgba(0,0,0,0.45),var(--shadow-border)]"
         >
           {LOCALES.map((id) => {
             const on = id === locale;

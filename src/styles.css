@@ -2,23 +2,22 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-sans: "Barlow", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", ui-sans-serif, sans-serif;
 
-  --color-bg: #f7f3ec;
-  --color-surface: #ffffff;
-  --color-raised: #f7f3ec;
-  --color-fg: #07102c;
-  --color-muted: #5f6680;
-  --color-faint: #6b7391;
+  --color-bg: #07102c;
+  --color-surface: #0e1a42;
+  --color-raised: #132252;
+  --color-fg: #f3f1ec;
+  --color-muted: #9aa3c2;
+  --color-faint: #6d7694;
   --color-accent: #f07828;
   --color-accent-fg: #07102c;
-  --color-accent-2: #a8480a;
-  --color-ink: #a8480a;
-  --color-border: #ece4d6;
-  --color-danger: #b42323;
-  --color-ok: #15803d;
-  --color-warn: #b42323;
+  --color-accent-2: #f5a05a;
+  --color-border: #24305a;
+  --color-danger: #d07676;
+  --color-ok: #7dbe8a;
+  --color-warn: #f07828;
   --color-offense: #f07828;
   --color-defense: #1aa6a1;
   --color-court: #2c1c12;
@@ -28,45 +27,14 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 22px;
+  --radius-xl: 24px;
   --radius-2xl: 28px;
 
   --aspect-half: 15 / 14;
   --aspect-full: 28 / 15;
 
-  --shadow-border: 0 4px 10px -4px rgba(80, 45, 10, 0.45);
-  --shadow-border-hover: 0 8px 16px -6px rgba(80, 45, 10, 0.4);
-}
-
-:root {
-  --mc-tint: color-mix(in srgb, var(--color-accent) 16%, #fff);
-  --mc-soft: color-mix(in srgb, var(--color-accent) 9%, #fff);
-  --mc-ink: color-mix(in srgb, var(--color-accent) 65%, #07102c);
-  --mc-key: color-mix(in srgb, var(--color-accent) 90%, transparent);
-  --mc-sh: 0 4px 10px -4px rgba(80, 45, 10, 0.45);
-}
-
-html {
-  background: #eac48e;
-}
-
-body {
-  background: transparent;
-  color: #07102c;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(120% 60% at 85% -10%, rgba(255, 250, 235, 0.55), transparent 60%),
-    linear-gradient(112deg, transparent 30%, rgba(255, 255, 255, 0.16) 42%, transparent 55%, rgba(255, 255, 255, 0.1) 70%, transparent 80%),
-    radial-gradient(140% 90% at 50% 40%, transparent 55%, rgba(110, 60, 15, 0.28)),
-    url("/wood_maple.jpg") 0 0 / 510px auto repeat,
-    #eac48e;
+  --shadow-border: 0 0 0 1px rgba(243, 241, 236, 0.08);
+  --shadow-border-hover: 0 0 0 1px rgba(243, 241, 236, 0.14);
 }
 
 @layer base {
@@ -78,12 +46,17 @@ body::before {
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #07102c;
+    background: var(--color-bg);
+    color: var(--color-fg);
   }
 
   body {
     min-height: 100dvh;
-    color: #07102c;
+    background:
+      radial-gradient(900px 420px at 50% -8%, color-mix(in srgb, #f07828 22%, transparent) 0%, transparent 62%),
+      radial-gradient(circle at 100% 120%, color-mix(in srgb, #1aa6a1 16%, transparent) 0%, transparent 46%),
+      var(--color-bg);
+    color: var(--color-fg);
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
@@ -92,6 +65,8 @@ body::before {
   h2,
   h3 {
     text-wrap: balance;
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
 
   p {
@@ -139,186 +114,16 @@ body::before {
   border-width: 0;
 }
 
-@layer components {
-  .mc-headline {
-    font-family: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
-    font-weight: 800;
-    font-style: italic;
-    text-transform: uppercase;
-    line-height: 0.92;
-    color: #07102c;
-  }
-
-  .mc-num {
-    font-family: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    line-height: 0.95;
-    font-variant-numeric: tabular-nums;
-    color: #07102c;
-  }
-
-  .mc-label {
-    font-family: "Barlow", "Inter", sans-serif;
-    font-weight: 700;
-    font-size: 10.5px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #5f6680;
-  }
-
-  .mc-card {
-    background: #fff;
-    border-radius: 18px;
-    border: 0;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      0 2px 3px rgba(80, 45, 10, 0.18),
-      0 18px 34px -14px rgba(80, 45, 10, 0.55);
-  }
-
-  .mc-tag {
-    display: inline-flex;
-    align-items: center;
-    height: 22px;
-    border-radius: 6px;
-    padding: 0 8px;
-    font-size: 10.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    background: var(--mc-tint);
-    color: var(--mc-ink);
-  }
-
-  .mc-tag-navy {
-    background: #eef0f6;
-    color: #07102c;
-  }
-
-  .mc-chip,
-  .mc-chip-on {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px;
-    border-radius: 999px;
-    padding: 0 12px;
-    font-size: 13.5px;
-    font-weight: 700;
-    white-space: nowrap;
-    box-shadow: var(--mc-sh);
-  }
-
-  .mc-chip {
-    background: #fff;
-    color: #07102c;
-  }
-
-  .mc-chip-on {
-    background: #07102c;
-    color: #fff;
-  }
-
-  .mc-iconbtn {
-    display: grid;
-    width: 40px;
-    height: 40px;
-    place-items: center;
-    border: 0;
-    padding: 0;
-    border-radius: 999px;
-    background: #fff;
-    color: #07102c;
-    box-shadow: var(--mc-sh);
-  }
-
-  .mc-iconbtn-accent {
-    background: var(--color-accent);
-    color: var(--color-accent-fg);
-    border: 3px solid #fff;
-  }
-
-  .mc-tile {
-    display: grid;
-    width: 44px;
-    height: 44px;
-    place-items: center;
-    flex-shrink: 0;
-    border: 1.5px solid #e2dacb;
-    padding: 0;
-    border-radius: 12px;
-    background: #fff;
-    color: #07102c;
-  }
-
-  .mc-line {
-    height: 5px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 0;
-  }
-
-  .mc-key {
-    background: var(--mc-key);
-    border: 5px solid rgba(255, 255, 255, 0.95);
-    border-top: 0;
-    padding: 14px 14px 22px;
-  }
-
-  .mc-ft {
-    width: 104px;
-    height: 52px;
-    border: 5px solid rgba(255, 255, 255, 0.95);
-    border-top: 0;
-    border-radius: 0 0 52px 52px;
-    pointer-events: none;
-  }
-
-  .mc-circle {
-    display: grid;
-    width: 88px;
-    height: 88px;
-    place-items: center;
-    border-radius: 999px;
-    border: 5px solid rgba(255, 255, 255, 0.95);
-    background: rgba(7, 16, 44, 0.92);
-  }
-
-  .mc-avatar {
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    border-radius: 999px;
-    background: #07102c;
-    color: #fff;
-    font-family: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
-    font-weight: 800;
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-accent);
-  }
-}
-
 @media print {
   nav,
   .no-print,
-  .splash,
-  body::before,
-  .mc-line,
-  .mc-ft,
-  .mc-circle {
+  .splash {
     display: none !important;
-  }
-  .mc-key {
-    background: transparent !important;
-    border: 0 !important;
-    padding: 0 !important;
   }
   html,
   body {
     background: #fff !important;
     color: #111 !important;
-  }
-  body::before {
-    content: none !important;
   }
 }
 

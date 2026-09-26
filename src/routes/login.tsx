@@ -60,7 +60,7 @@ function Login() {
         <Link to="/" className="text-sm text-muted">
           {t("login.back")}
         </Link>
-        <h1 className="mc-headline mt-6 text-[44px]">{t("login.title")}</h1>
+        <h1 className="mt-6 font-display text-3xl text-fg">{t("login.title")}</h1>
         <p className="mt-3 max-w-sm text-sm text-muted">{t("login.blurb")}</p>
 
         {isPending ? (
@@ -90,7 +90,7 @@ function Login() {
           <span className="h-px flex-1 bg-border" />
         </div>
 
-        <form className="mc-card mt-5 flex flex-col gap-3 p-4" onSubmit={(e) => void onEmail(e)}>
+        <form className="mt-5 flex flex-col gap-3" onSubmit={(e) => void onEmail(e)}>
           {mode === "up" ? (
             <div>
               <Label htmlFor="name">{t("login.yourName")}</Label>
