@@ -8,9 +8,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "rounded-[14px] bg-[#07102c] font-sans text-sm font-bold text-white",
+        default: "rounded-[12px] bg-[#07102c] font-sans text-sm font-bold text-white",
         secondary:
-          "rounded-[14px] border border-[#e6e0d4] bg-white text-[#07102c] shadow-none",
+          "rounded-[12px] border-[1.5px] border-[#e2dacb] bg-white text-[#07102c] shadow-none",
         outline:
           "border border-border bg-transparent text-fg hover:bg-raised",
         ghost: "text-fg hover:bg-raised",

@@ -61,12 +61,12 @@ function Practices() {
               <Link
                 to="/practices/$planId"
                 params={{ planId: plan.id }}
-                className="hw-card block p-4"
+                className="mc-card block p-4"
               >
-                <p className="hw-label text-[#a8480a]">
+                <p className="mc-label text-[#a8480a]">
                   {formatDateLabel(plan.date, LOCALE_META[locale].bcp47)}
                 </p>
-                <h2 className="hw-headline mt-1 text-[28px]">{plan.name}</h2>
+                <h2 className="mc-headline mt-1 text-[28px]">{plan.name}</h2>
                 <div className="mt-2">
                   <PlanMeta plan={plan} />
                 </div>
@@ -74,7 +74,7 @@ function Practices() {
                   {plan.blocks.slice(0, 4).map((b) => (
                     <li key={b.id} className="flex justify-between text-sm text-muted">
                       <span className="truncate">{b.title}</span>
-                      <span className="hw-num text-[20px]">{b.minutes}</span>
+                      <span className="mc-num text-[20px]">{b.minutes}</span>
                     </li>
                   ))}
                   {plan.blocks.length > 4 ? (

@@ -41,8 +41,8 @@ function SettingsPage() {
     <AppShell>
       <PageHeader kicker={t("settings.kicker")} title={t("settings.title")} />
       <div className="flex flex-col gap-4 px-4 pb-10">
-        <section className="hw-card p-4">
-          <h2 className="hw-headline text-[28px]">{t("settings.account")}</h2>
+        <section className="mc-card p-4">
+          <h2 className="mc-headline text-[28px]">{t("settings.account")}</h2>
           {isPending ? (
             <div className="mt-3 h-10 animate-pulse rounded-md bg-raised" />
           ) : (
@@ -69,7 +69,7 @@ function SettingsPage() {
             </>
           )}
         </section>
-        <section className="hw-card flex flex-col gap-4 p-4">
+        <section className="mc-card flex flex-col gap-4 p-4">
           <div>
             <Label htmlFor="team">{t("settings.team")}</Label>
           <Input
@@ -191,16 +191,16 @@ function SettingsPage() {
         </section>
 
         <section className="mt-4">
-          <h2 className="hw-headline text-[28px]">{t("settings.roster")}</h2>
+          <h2 className="mc-headline text-[28px]">{t("settings.roster")}</h2>
           <p className="mt-1 text-sm text-muted">{t("settings.rosterHint")}</p>
           <ul className="mt-3 flex flex-col gap-2">
             {roster.map((p) => (
               <li
                 key={p.id}
-                className="hw-card p-2"
+                className="mc-card p-2"
               >
                 <div className="flex items-center gap-1.5">
-                  <RosterJersey number={p.number} name={p.name} />
+                  <RosterAvatar name={p.name} />
                   <Input
                     className="w-16 shrink-0"
                     value={p.number}
@@ -318,7 +318,7 @@ function SettingsPage() {
           </div>
         </section>
 
-        <div className="hw-card p-4 text-sm text-muted">
+        <div className="mc-card p-4 text-sm text-muted">
           <p className="font-medium text-fg">{t("settings.thisDevice")}</p>
           <p className="mt-1">
             {t("settings.stored", {
@@ -334,43 +334,15 @@ function SettingsPage() {
   );
 }
 
-function RosterJersey({ number, name }: { number: string; name: string }) {
-  const raw = number.trim();
-  const letters = name
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((part) => part[0] ?? "")
-    .join("")
-    .slice(0, 3)
-    .toUpperCase();
-  const chars = (raw ? raw.replace(/\s/g, "").slice(0, 2) : letters) || "?";
-  return (
-    <svg viewBox="0 0 100 110" className="h-11 w-9 shrink-0" aria-hidden>
-      <path
-        d="M30 4C31 17 40 25 50 25S69 17 70 4L85 8C85 21 89 29 97 33V104a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V33C11 29 15 21 15 8Z"
-        fill="#07102c"
-      />
-      <path
-        d="M30 4C31 17 40 25 50 25S69 17 70 4M15 8C15 21 11 29 3 33M85 8C85 21 89 29 97 33"
-        fill="none"
-        stroke="#f07828"
-        strokeWidth="3.2"
-      />
-      <text
-        x="50"
-        y="88"
-        textAnchor="middle"
-        fontFamily="Big Shoulders Display, Oswald, sans-serif"
-        fontWeight="900"
-        fontSize={chars.length > 2 ? 28 : 36}
-        fill="#ffffff"
-        stroke="#f07828"
-        strokeWidth="1.2"
-        paintOrder="stroke"
-      >
-        {chars}
-      </text>
-    </svg>
-  );
+function RosterAvatar({ name }: { name: string }) {
+  const letters =
+    name
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0] ?? "")
+      .join("")
+      .toUpperCase() || "?";
+  return <span className="mc-avatar size-10 shrink-0 text-[16px]">{letters}</span>;
 }

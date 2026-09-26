@@ -2,12 +2,12 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-sans: "DM Sans", "Inter", "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Big Shoulders Display", "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
 
-  --color-bg: #f4f1eb;
+  --color-bg: #f7f3ec;
   --color-surface: #ffffff;
-  --color-raised: #f7f4ee;
+  --color-raised: #f7f3ec;
   --color-fg: #07102c;
   --color-muted: #5f6680;
   --color-faint: #6b7391;
@@ -15,7 +15,7 @@
   --color-accent-fg: #07102c;
   --color-accent-2: #a8480a;
   --color-ink: #a8480a;
-  --color-border: #e6e0d4;
+  --color-border: #ece4d6;
   --color-danger: #b42323;
   --color-ok: #15803d;
   --color-warn: #b42323;
@@ -28,14 +28,45 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-xl: 22px;
   --radius-2xl: 28px;
 
   --aspect-half: 15 / 14;
   --aspect-full: 28 / 15;
 
-  --shadow-border: 0 0 0 1px rgba(243, 241, 236, 0.08);
-  --shadow-border-hover: 0 0 0 1px rgba(243, 241, 236, 0.14);
+  --shadow-border: 0 4px 10px -4px rgba(80, 45, 10, 0.45);
+  --shadow-border-hover: 0 8px 16px -6px rgba(80, 45, 10, 0.4);
+}
+
+:root {
+  --mc-tint: color-mix(in srgb, var(--color-accent) 16%, #fff);
+  --mc-soft: color-mix(in srgb, var(--color-accent) 9%, #fff);
+  --mc-ink: color-mix(in srgb, var(--color-accent) 65%, #07102c);
+  --mc-key: color-mix(in srgb, var(--color-accent) 90%, transparent);
+  --mc-sh: 0 4px 10px -4px rgba(80, 45, 10, 0.45);
+}
+
+html {
+  background: #eac48e;
+}
+
+body {
+  background: transparent;
+  color: #07102c;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 60% at 85% -10%, rgba(255, 250, 235, 0.55), transparent 60%),
+    linear-gradient(112deg, transparent 30%, rgba(255, 255, 255, 0.16) 42%, transparent 55%, rgba(255, 255, 255, 0.1) 70%, transparent 80%),
+    radial-gradient(140% 90% at 50% 40%, transparent 55%, rgba(110, 60, 15, 0.28)),
+    url("/wood_maple.jpg") 0 0 / 510px auto repeat,
+    #eac48e;
 }
 
 @layer base {
@@ -47,13 +78,11 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #f4f1eb;
     color: #07102c;
   }
 
   body {
     min-height: 100dvh;
-    background: #f4f1eb;
     color: #07102c;
     font-family: var(--font-sans);
     overflow-x: hidden;
@@ -63,8 +92,6 @@
   h2,
   h3 {
     text-wrap: balance;
-    font-family: var(--font-display);
-    letter-spacing: -0.02em;
   }
 
   p {
@@ -113,41 +140,44 @@
 }
 
 @layer components {
-  .hw-headline {
-    font-family: "Big Shoulders Display", "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
-    font-weight: 900;
+  .mc-headline {
+    font-family: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
+    font-weight: 800;
+    font-style: italic;
     text-transform: uppercase;
     line-height: 0.92;
     color: #07102c;
   }
 
-  .hw-num {
-    font-family: "Big Shoulders Display", "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
-    font-weight: 800;
-    line-height: 0.9;
+  .mc-num {
+    font-family: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 0.95;
     font-variant-numeric: tabular-nums;
     color: #07102c;
   }
 
-  .hw-label {
-    font-family: "DM Sans", "Inter", "Figtree", sans-serif;
+  .mc-label {
+    font-family: "Barlow", "Inter", sans-serif;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 10.5px;
     text-transform: uppercase;
-    letter-spacing: 1.6px;
+    letter-spacing: 1.5px;
     color: #5f6680;
   }
 
-  .hw-card {
+  .mc-card {
     background: #fff;
-    border-radius: 22px;
-    border: 1px solid #ece7dd;
+    border-radius: 18px;
+    border: 0;
     box-shadow:
-      0 1px 0 rgba(7, 16, 44, 0.04),
-      0 10px 30px -12px rgba(7, 16, 44, 0.18);
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 2px 3px rgba(80, 45, 10, 0.18),
+      0 18px 34px -14px rgba(80, 45, 10, 0.55);
   }
 
-  .hw-tag {
+  .mc-tag {
     display: inline-flex;
     align-items: center;
     height: 22px;
@@ -156,81 +186,139 @@
     font-size: 10.5px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    background: #fde8d9;
-    color: #a8480a;
+    letter-spacing: 1.2px;
+    background: var(--mc-tint);
+    color: var(--mc-ink);
   }
 
-  .hw-chip,
-  .hw-chip-on {
+  .mc-tag-navy {
+    background: #eef0f6;
+    color: #07102c;
+  }
+
+  .mc-chip,
+  .mc-chip-on {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 34px;
-    border-radius: 17px;
+    height: 36px;
+    border-radius: 999px;
     padding: 0 12px;
-    font-weight: 600;
-    font-size: 12px;
+    font-size: 13.5px;
+    font-weight: 700;
     white-space: nowrap;
+    box-shadow: var(--mc-sh);
   }
 
-  .hw-chip {
+  .mc-chip {
     background: #fff;
-    border: 1px solid #e6e0d4;
-    color: #4a5170;
+    color: #07102c;
   }
 
-  .hw-chip-on {
+  .mc-chip-on {
     background: #07102c;
     color: #fff;
-    border: 1px solid #07102c;
   }
 
-  .hw-iconbtn {
+  .mc-iconbtn {
     display: grid;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     place-items: center;
     border: 0;
     padding: 0;
     border-radius: 999px;
     background: #fff;
     color: #07102c;
-    box-shadow: 0 6px 16px -6px rgba(7, 16, 44, 0.3);
+    box-shadow: var(--mc-sh);
   }
 
-  .hw-tile {
+  .mc-iconbtn-accent {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+    border: 3px solid #fff;
+  }
+
+  .mc-tile {
     display: grid;
     width: 44px;
     height: 44px;
     place-items: center;
     flex-shrink: 0;
-    border: 1px solid #e6e0d4;
+    border: 1.5px solid #e2dacb;
     padding: 0;
     border-radius: 12px;
     background: #fff;
     color: #07102c;
   }
 
-  .hw-wood {
-    background-color: #e2b47e;
-    background-image: url("/wood.jpg");
-    background-size: 420px;
-    background-position: center;
-    background-repeat: repeat;
+  .mc-line {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 0;
+  }
+
+  .mc-key {
+    background: var(--mc-key);
+    border: 5px solid rgba(255, 255, 255, 0.95);
+    border-top: 0;
+    padding: 14px 14px 22px;
+  }
+
+  .mc-ft {
+    width: 104px;
+    height: 52px;
+    border: 5px solid rgba(255, 255, 255, 0.95);
+    border-top: 0;
+    border-radius: 0 0 52px 52px;
+    pointer-events: none;
+  }
+
+  .mc-circle {
+    display: grid;
+    width: 88px;
+    height: 88px;
+    place-items: center;
+    border-radius: 999px;
+    border: 5px solid rgba(255, 255, 255, 0.95);
+    background: rgba(7, 16, 44, 0.92);
+  }
+
+  .mc-avatar {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #07102c;
+    color: #fff;
+    font-family: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
+    font-weight: 800;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-accent);
   }
 }
 
 @media print {
   nav,
   .no-print,
-  .splash {
+  .splash,
+  body::before,
+  .mc-line,
+  .mc-ft,
+  .mc-circle {
     display: none !important;
+  }
+  .mc-key {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
   }
   html,
   body {
     background: #fff !important;
     color: #111 !important;
+  }
+  body::before {
+    content: none !important;
   }
 }
 

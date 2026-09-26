@@ -45,7 +45,10 @@ function normalizeSettings(raw: Partial<Settings> | undefined): Settings {
     ageGroup: raw?.ageGroup ?? INITIAL_SETTINGS.ageGroup,
     defaultPracticeMinutes:
       raw?.defaultPracticeMinutes ?? INITIAL_SETTINGS.defaultPracticeMinutes,
-    primaryColor: raw?.primaryColor ?? INITIAL_SETTINGS.primaryColor,
+    primaryColor:
+      !raw?.primaryColor || raw.primaryColor.toLowerCase() === "#d4a017"
+        ? "#f07828"
+        : raw.primaryColor,
     logoDataUrl: raw?.logoDataUrl ?? "",
     roster,
     locale: isLocale(raw?.locale) ? raw.locale : detectLocale(),

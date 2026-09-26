@@ -120,7 +120,7 @@ export function RunMode({ planId }: { planId: string }) {
   }
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col bg-bg px-4 pb-6 pt-[max(0.5rem,env(safe-area-inset-top))]">
+    <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col bg-transparent px-4 pb-6 pt-[max(0.5rem,env(safe-area-inset-top))]">
       <header className="flex items-center justify-between">
         <Button
           variant="ghost"
@@ -132,7 +132,7 @@ export function RunMode({ planId }: { planId: string }) {
         >
           <ChevronLeft className="size-5" />
         </Button>
-        <p className="hw-label text-[#a8480a]">
+        <p className="mc-label text-[#a8480a]">
           {plan.name}
         </p>
         <span className="size-11" />
@@ -142,13 +142,12 @@ export function RunMode({ planId }: { planId: string }) {
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
           {done ? t("run.complete") : t(`block.${block.type}` as Msg)}
         </p>
-        <h1 className="hw-headline mt-2 text-[40px]">
+        <h1 className="mc-headline mt-2 text-[40px]">
           {done ? t("run.doneTitle") : block.title}
         </h1>
         <div className="relative mt-6 w-full overflow-hidden rounded-[22px] bg-[#07102c] px-4 py-6 text-white">
-          <div className="hw-wood pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden />
           <p
-            className="hw-num relative text-[96px] text-[#f07828]"
+            className="mc-num relative text-[96px] text-[var(--color-accent)]"
             data-remaining={remaining}
             aria-live="polite"
           >
@@ -157,7 +156,7 @@ export function RunMode({ planId }: { planId: string }) {
         </div>
         <div className="mt-6 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-[#f1ede5]">
           <div
-            className="h-full rounded-full bg-[#f07828]"
+            className="h-full rounded-full bg-[var(--color-accent)]"
             style={{ width: `${done ? 100 : pct * 100}%` }}
           />
         </div>
@@ -216,10 +215,10 @@ export function RunMode({ planId }: { planId: string }) {
         ) : null}
       </div>
 
-      <div className="hw-card p-4">
-        <p className="hw-label">{t("run.next")}</p>
+      <div className="mc-card p-4">
+        <p className="mc-label">{t("run.next")}</p>
         {next && !done ? (
-          <p className="hw-headline mt-1 text-[28px]">
+          <p className="mc-headline mt-1 text-[28px]">
             {next.title}{" "}
             <span className="text-[18px] text-[#5f6680]">· {next.minutes} min</span>
           </p>

@@ -119,7 +119,7 @@ export type AppData = {
 export const AGE_GROUPS = ["U10", "U12", "U14", "U16", "U18", "Open"] as const;
 
 export const COLOR_PRESETS = [
-  "#d4a017",
+  "#f07828",
   "#c45c4a",
   "#3d9a6a",
   "#4a8fb8",

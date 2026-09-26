@@ -112,13 +112,13 @@ function Playbook() {
               <Link
                 to="/playbook/$playId"
                 params={{ playId: play.id }}
-                className="hw-card block overflow-hidden"
+                className="mc-card block overflow-hidden"
               >
                 <PlayThumb play={play} className="rounded-none rounded-t-[21px] max-h-48" />
                 <div className="space-y-2 p-4">
                   <div className="flex items-baseline justify-between gap-2">
-                    <h2 className="hw-headline min-w-0 truncate text-[28px]">{play.name}</h2>
-                    <span className="hw-num shrink-0 text-[22px] text-[#f07828]">
+                    <h2 className="mc-headline min-w-0 truncate text-[28px]">{play.name}</h2>
+                    <span className="mc-num shrink-0 text-[22px] text-[var(--color-accent)]">
                       {play.steps.length}
                     </span>
                   </div>
@@ -146,7 +146,7 @@ function Chip({
     <button
       type="button"
       onClick={onClick}
-      className={cn("hw-chip shrink-0", on && "hw-chip-on")}
+      className={cn("mc-chip shrink-0", on && "mc-chip-on")}
     >
       {children}
     </button>

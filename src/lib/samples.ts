@@ -683,7 +683,7 @@ export const INITIAL_SETTINGS: Settings = {
   shortClubName: "PHX",
   ageGroup: "U14",
   defaultPracticeMinutes: 90,
-  primaryColor: "#d4a017",
+  primaryColor: "#f07828",
   logoDataUrl: "",
   roster: SAMPLE_ROSTER.map((r) => ({ ...r })),
   locale: "en",
